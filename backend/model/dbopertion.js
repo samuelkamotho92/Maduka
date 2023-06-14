@@ -11,14 +11,20 @@ console.log("server not connected");
 
 }
 
-const getDataWithQuery = async()=>{
+const getDataWithQuery = async(req,resp,next)=>{
     try {
       let pool = await sql.connect(config);
+      console.log(pool)
       let res = await pool.request().query('SELECT *  FROM users');
-      return res.recordset;
+      console.log(res.recordsets);
+     resp.status(200).json({
+      status:'success',
+      data:res.recordsets
+     })
     } catch (error) {
   console.log(" mathus-error :" + error);
     }
+    next()
   }
   module.exports = {
     getData,

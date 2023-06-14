@@ -9,14 +9,14 @@ var confiq = {
         encrypt: true,
         enableArithAbort: true,
         trustServerCertificate: true,
-      },
-      dialect: "mssql",
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  }
+      }
+  //     dialect: "mssql",
+  // pool: {
+  //   max: 5,
+  //   min: 0,
+  //   acquire: 30000,
+  //   idle: 10000
+  // }
       
 }
 module.exports = confiq;

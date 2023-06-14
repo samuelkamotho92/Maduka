@@ -1,15 +1,19 @@
 const express = require('express');
 const userRouter = require('./routers/userRoutes')
-const db = require('./model');
+const epRouter = require('./routers/enterprise')
+const auctionRouter = require('./routers/auctionRoutes');
+// const db = require('./model');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
 const port = 8000
-db.sequelize.sync();
+// db.sequelize.sync();
 
 //connecting to mysql
  //query
-app.use('/users/',userRouter);
+app.use('/users',userRouter);
+app.use('/enterprise',epRouter);
+app.use('/auctions',auctionRouter)
 app.listen(port,()=>{
     console.log(`listening on ${port}`)
 })

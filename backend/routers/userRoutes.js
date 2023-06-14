@@ -1,11 +1,12 @@
 const express = require('express');
 const userRouter = express.Router();
 const userControler = require('../controler/userControler')
-
+const {getDataWithQuery} = require('../model/dbopertion');
 
 userRouter
-.route('/getUsers')
+.route('/')
 .get(userControler.getAllUsers)
+.post(userControler.createUser)
 
 userRouter
 .route('/:id')
@@ -13,5 +14,5 @@ userRouter
 .put(userControler.updateUser)
 .delete(userControler.deleteUser)
 
-userRouter.post('/createUser',userControler.createUser)
+
 module.exports = userRouter;
