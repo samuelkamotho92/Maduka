@@ -2,6 +2,8 @@ const express = require('express');
 const userRouter = require('./routers/userRoutes')
 const epRouter = require('./routers/enterprise')
 const auctionRouter = require('./routers/auctionRoutes');
+const dotenv = require('dotenv');
+dotenv.config({path:'./.env'});
 // const db = require('./model');
 const app = express();
 app.use(express.json());

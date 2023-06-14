@@ -1,28 +1,69 @@
 const config = require('../config/confiq');
+const  bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 const sql = require('mssql');
 const createUser = async(req,res)=>{
+    const {firstName,lastName,phoneNumber,email,password,isAdmin} = req.body
+    //hash the password
+    const hashedpwd = bcrypt.hashSync(password,10);
     try{
-const {firstName,lastName,phoneNumber,email,password} = req.body
-
 let pool = await sql.connect(config);
 let insertUser = await pool.request()
 .input('firstName',sql.VarChar,firstName)
 .input('lastName',sql.VarChar,lastName)
 .input('phoneNumber',sql.VarChar,phoneNumber)
 .input('email',sql.VarChar,email)
-.input('password',sql.VarChar,password)
-.query('INSERT INTO users (firstName,lastName,phoneNumber,email,password) VALUES (@firstName,@lastName,@phoneNumber,@email,@password)')
+.input('password',sql.VarChar,hashedpwd)
+.input('isAdmin',sql.Bit,isAdmin)
+.query('INSERT INTO users (firstName,lastName,phoneNumber,email,password,isAdmin) VALUES (@firstName,@lastName,@phoneNumber,@email,@password,@isAdmin)')
 
 res.status(200).json({
     status:'success',
     data:insertUser
 })
     }catch(err){
-res.status(404).json(err)
+res.status(404).json(err);
     }
 
 }
+
+//login user
+
+const loginUser = async(req,res)=>{
+    console.log(req.body);
+    console.log(process.env.SECRET)
+const {email,password} = req.body;
+//connection db
+let pool = await sql.connect(config)
+const result = await pool.request()
+.input('email',sql.VarChar,email)
+.query('SELECT * FROM users WHERE email = @email');
+const user = result.recordset[0];
+console.log(user);
+if(!user){
+    res.status(404).json({
+        status:'error',
+        message:'user not found'
+    })
+}else{
+    if(!bcrypt.compareSync(password,user.password)){
+        res.status(404).json({
+            status:'error',
+            message:"password does not match"
+        })
+    }else{
+        //create a jwt token store it 
+        const token = `${jwt.sign({email:user.email,isAdmin:user.isAdmin},process.env.SECRET,{expiresIn:process.env.EXPIRY})}`
+        res.status(200).json({
+            status:'success',
+            data:user,
+            accesToken:token
+        })
+    }
+}
+}
+
 
 const getAllUsers = async(req,res)=>{
     try{
@@ -104,5 +145,6 @@ module.exports = {
     getAllUsers,
     getOneUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    loginUser
 }

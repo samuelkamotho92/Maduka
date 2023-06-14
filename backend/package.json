@@ -10,9 +10,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.1.4",
     "express": "^4.18.2",
     "global": "^4.4.0",
+    "jsonwebtoken": "^9.0.0",
     "msnodesqlv8": "^4.1.0",
     "mssql": "^9.1.1",
     "mysql": "^2.18.1",
