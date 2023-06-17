@@ -1,7 +1,7 @@
 var confiq = {
     server:'DESKTOP-KE6NN2R',
     database:'Maduka',
-    host:"localhost",
+    // host:"localhost",
     user:'sa',
     password:'12345678',
     options: {

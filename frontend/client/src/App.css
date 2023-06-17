@@ -40,3 +40,49 @@
 .read-the-docs {
   color: #888;
 } */
+
+#mybannerImg{
+  width: 50%;
+}
+.accordion {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: rgb(50, 49, 49);
+  border:5 solid black;
+}
+.accordion-item{
+  border-radius: 30px;
+ 
+  padding: 20px;
+  margin: auto;
+}
+
+.accordion-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  background-color: #a393eb;
+  padding: 20px;
+}
+
+
+
+.accordion-title,
+.accordion-content {
+  padding: 1rem;
+}
+
+.accordion-content {
+  background-color:  rgb(239, 201, 239);
+}
+
+@media screen and (max-width: 700px) {
+  body {
+    font-size: 18px;
+  }
+
+  .accordion {
+    width: 90%;
+  }
+}
