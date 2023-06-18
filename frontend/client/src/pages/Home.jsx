@@ -4,6 +4,8 @@ import HeroHome from '../components/HeroHome'
 import Features from '../components/Features'
 import Teams from '../components/Team'
 import Services from '../components/Services'
+import Testimonial from '../components/Testimonial'
+import Footer from '../components/Footer'
 const Home = () => {
   return (
     <div className='flex flex-col min-h-screen '>
@@ -14,6 +16,8 @@ const Home = () => {
 <Features />
 <Teams />
 <Services />
+<Testimonial />
+<Footer />
       </main>
     </div>
   )

@@ -27,10 +27,10 @@ const HeroHome = () => {
               <p className="text-xl text-gray-600 mb-8" data-aos="zoom-y-out" data-aos-delay="150">Best Auctioning Site and Online Business plartform in Kenya </p>
                   <div className="max-w-xs mx-auto sm:max-w-none sm:flex sm:justify-center" data-aos="zoom-y-out" data-aos-delay="300">
                 <div>
-                  <Link className="btn text-xl cursor-pointer m-2 sm:text-sm ml-2 hover:bg-teal-400 p-1" to="/signup">Register</Link>
+                  <Link className="btn text-xl cursor-pointer m-2 sm:text-sm ml-2 hover:bg-teal-400 p-1" to="/register">Register</Link>
                 </div>
                 <div>
-                  <Link className="btn text-xl cursor-pointer m-2 sm:text-sm ml-2 hover:bg-teal-400 p-1" to="/signin">Log In</Link>
+                  <Link className="btn text-xl cursor-pointer m-2 sm:text-sm ml-2 hover:bg-teal-400 p-1" to="/login">Log In</Link>
                 </div>
               </div>     
             </div>
