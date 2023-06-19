@@ -17,7 +17,7 @@ menu.classList.toggle('flex');
    }
   return (
     <div className='h-50 shadow-md relative bg-gradient-to-r from-[#ad5389] to-[#3c1053] text-slate-50'>
-      <div className="py-2.5 sm:px-5 sm:py-2 flex justify-between items-center" >
+<div className="py-2.5 sm:px-5 sm:py-2 flex justify-between items-center" >
 <div className='flex-1 justify-start items-center'>
 <h2 className='text-lg ml-2'>Maduka SMEs</h2>
 </div>
@@ -41,7 +41,7 @@ Enterprise
 <Link to='/login'>
 Login
 </Link>
-   </div>
+</div>
 <div className='text-md cursor-pointer m-2 sm:text-sm ml-2 hover:bg-teal-400 p-1'>
 <Link to='/register'>
 Register

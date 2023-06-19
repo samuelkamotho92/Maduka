@@ -49,6 +49,7 @@
   margin: 2rem auto;
   background-color: rgb(50, 49, 49);
   border:5 solid black;
+  transition: all ease-in-out 1s;
 }
 .accordion-item{
   border-radius: 30px;
@@ -71,6 +72,7 @@
 .accordion-title,
 .accordion-content {
   padding: 1rem;
+  transition: ease-in-out 1s;
 }
 
 .accordion-content {

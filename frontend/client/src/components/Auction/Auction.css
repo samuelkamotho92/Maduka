@@ -1,0 +1,30 @@
+.main{
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+}
+.main .filter{
+   flex: 1;
+   border-radius: '30px';
+   border: solid 3px rgb(73, 0, 128);
+   margin-left: 30px;
+}
+.filter .category{
+    display: flex;
+    justify-content: space-between;
+}
+.main .products{
+flex: 3;
+margin-left: 30px;
+}
+.products .product{
+    display: grid;
+    grid-template-columns:auto auto auto auto ;
+}
+.category img{
+    border-radius: 50%;
+}
+.category i{
+    cursor: pointer;
+}
