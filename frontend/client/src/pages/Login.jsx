@@ -1,8 +1,24 @@
 import React from 'react'
+import { useDispatch,useSelector } from 'react-redux'
 import {FcGoogle} from 'react-icons/fc'
 import {MdAlternateEmail} from 'react-icons/md'
 import {BsLockFill} from 'react-icons/bs'
+import {useForm} from 'react-hook-form';
+import * as yup from 'yup' ;
+import { yupResolver } from '@hookform/resolvers/yup';
+import {login} from '../redux/apiCall'
 const Login = () => {
+  const dispatch = useDispatch();
+const loginSchema = yup.object().shape({
+email:yup.string().email().required(),
+password:yup.string().min(8).required()
+  })
+  const {handleSubmit,register,watch,formState:{errors}} = useForm({resolver:yupResolver(loginSchema)})
+  const onSubmit = (data)=>{
+console.log(data);
+const {email,password} = data
+login(dispatch,{email,password});
+  }
   return (
     <div className=''>   
     <div className="p-8 lg:w-1/2 mx-auto">
@@ -27,7 +43,7 @@ const Login = () => {
         <p className="text-center text-sm text-gray-500 font-light">
           Or sign in with credentials
         </p>
-        <form className="mt-6">
+        <form className="mt-6" onSubmit={handleSubmit(onSubmit)}>
           <div className="relative">
             <input
               className="appearance-none border pl-12 border-gray-100 
@@ -37,11 +53,13 @@ const Login = () => {
               id="email"
               type="text"
               placeholder="email"
+              {...register('email')}
             />
             <div className="absolute left-0 inset-y-0 flex items-center">  
           <MdAlternateEmail />
             </div>
           </div>
+          <p style={{color:'red'}}>{errors.email?.message}</p>
           <div className="relative mt-3">     
             <input
               className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none
@@ -49,11 +67,13 @@ const Login = () => {
               id="password"
               type="password"
               placeholder="Password"
+              {...register('password')}
             />
             <div className="absolute left-0 inset-y-0 flex items-center">
        <BsLockFill />
             </div>
           </div>
+          <p style={{color:'red'}}>{errors.password?.message}</p>
           <div className="mt-4 flex items-center text-gray-500">  
             <input
               type="checkbox"

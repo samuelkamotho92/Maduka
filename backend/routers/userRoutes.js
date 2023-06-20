@@ -6,7 +6,7 @@ const {getDataWithQuery} = require('../model/dbopertion');
 
 userRouter
 .route('/')
-.get(verifyToken,userControler.getAllUsers)
+.get(userControler.getAllUsers)
 .post(userControler.createUser)
 
 userRouter

@@ -1,9 +1,14 @@
 import {Link} from 'react-router-dom'
 import {useState,useEffect} from 'react'
-
+import {useDispatch, useSelector } from 'react-redux';
+import { Button } from 'react-daisyui';
+import {loggedOut}  from '../redux/apiCall'
 const Navbar = () => {
    const [btn,setbtn] = useState();
    const [menu,setmenu] = useState();
+   const dispatch = useDispatch();
+    const user = useSelector((state)=>state.user?.currentUser?.data.username)
+   console.log(user)
    useEffect(()=>{
 const getBtn = document.getElementById('hamburger-button');
 const getMenu = document.getElementById('mobile-menu');
@@ -23,7 +28,7 @@ menu.classList.toggle('flex');
 </div>
 <div className='hidden md:flex items-center justify-center flex-1'>
    <div className='text-sm cursor-pointer m-2 sm:text-sm ml-2'>
-<p>Welcome Back <span>Samuel Kamotho</span></p>
+<p>Welcome Back <span>{user}</span></p>
    </div>
    <div className='text-sm cursor-pointer m-2 sm:text-sm ml-2'>
 <Link to='/auctions'>
@@ -36,6 +41,8 @@ Enterprise
       </Link>
    </div>
 </div>
+{
+   !user? (
 <div className='hidden md:flex items-center justify-end flex-1'>
 <div className='text-md cursor-pointer m-2 sm:text-sm ml-2  hover:bg-teal-400 p-1'>
 <Link to='/login'>
@@ -48,6 +55,15 @@ Register
 </Link>
    </div>
 </div>
+   ):(
+      <div className='hidden md:flex items-center justify-end flex-1'>
+<Button onClick={()=>{loggedOut(dispatch)}}>Logout</Button>
+      </div>
+   )
+}
+
+
+
 <button  id="hamburger-button" className="block text-3xl md:hidden cursor-pointer mx-3" onClick={toggleMenu}>
 &#9776;
   </button>

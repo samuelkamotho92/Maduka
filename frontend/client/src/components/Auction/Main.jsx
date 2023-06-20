@@ -82,7 +82,13 @@ const Main = () => {
         <h1 className='text-center'>Category</h1>
    <div className='product'>
 <div>
-Product One
+<div className='image'>
+
+</div>
+<div className='content'>
+<p className='title'>Title</p>
+<span>20000ksh</span>
+</div>
 </div>
 <div>
     Product Two

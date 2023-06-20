@@ -4,23 +4,24 @@ const jwt = require('jsonwebtoken');
 
 const sql = require('mssql');
 const createUser = async(req,res)=>{
-    const {firstName,lastName,phoneNumber,email,password,isAdmin} = req.body
-    //hash the password
+    console.log('checking user registration');
+    const {fullname,username,phonenumber,email,password} = req.body
+    console.log(fullname,username,phonenumber,email,password);
+//     // //hash the password
     const hashedpwd = bcrypt.hashSync(password,10);
     try{
 let pool = await sql.connect(config);
 let insertUser = await pool.request()
-.input('firstName',sql.VarChar,firstName)
-.input('lastName',sql.VarChar,lastName)
-.input('phoneNumber',sql.VarChar,phoneNumber)
+.input('fullname',sql.VarChar,fullname)
+.input('username',sql.VarChar,username)
+.input('phonenumber',sql.VarChar,phonenumber)
 .input('email',sql.VarChar,email)
 .input('password',sql.VarChar,hashedpwd)
-.input('isAdmin',sql.Bit,isAdmin)
-.query('INSERT INTO users (firstName,lastName,phoneNumber,email,password,isAdmin) VALUES (@firstName,@lastName,@phoneNumber,@email,@password,@isAdmin)')
-
+.query('INSERT INTO users (fullname,username,phonenumber,email,password) VALUES (@fullname,@username,@phonenumber,@email,@password)')
+console.log(insertUser);
 res.status(200).json({
     status:'success',
-    data:insertUser
+    user:insertUser
 })
     }catch(err){
 res.status(404).json(err);

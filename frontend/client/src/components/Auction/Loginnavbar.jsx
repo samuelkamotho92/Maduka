@@ -21,7 +21,9 @@ const Loginnavbar = () => {
     <div className="h-50 shadow-md relative bg-gradient-to-r from-[#ad5389] to-[#3c1053] text-slate-50 fixed ">
       <div className="py-2.5 sm:px-5 sm:py-2 flex justify-between items-center">
         <div className="flex-1 justify-start items-center">
-          <h2 className="text-lg ml-2">Maduka SMEs</h2>
+          <h2 className="text-lg ml-2">
+            <Link to='/'>Maduka SMEs</Link>
+            </h2>
         </div>
         <div className="hidden md:flex items-center justify-center flex-1">
           <div className="text-sm cursor-pointer m-2 sm:text-sm ml-2 mr-3">
