@@ -8,6 +8,8 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Auctions from './pages/Auctions'
 import {ToastContainer} from 'react-toastify';
+import Auction from './components/Auction/Auction'
+import Sell from './components/Auction/Sell'
 function App() {
   return (
     <div>
@@ -18,6 +20,8 @@ function App() {
   <Route path='/register' element={<Register />} />
   <Route path='/login' element={<Login />} />
   <Route path='/auctions' element={<Auctions />}  />
+  <Route path='/auctions/:id' element={<Auction />} />
+  <Route path="/sell" element={<Sell />} />
 </Routes>
     </Router>
     </div>

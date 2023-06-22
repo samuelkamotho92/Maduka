@@ -5,6 +5,7 @@ align-items: center;
 
 }
 .main .filter{
+    align-self: start;
    flex: 1;
    border-radius: '30px';
    border: solid 3px rgb(73, 0, 128);
@@ -28,3 +29,23 @@ margin-left: 30px;
 .category i{
     cursor: pointer;
 }
+.seller{
+    box-shadow: 5px gray;
+    border-radius: 20px;
+    padding: 5px;
+    background-color: aliceblue;
+}
+Button{
+    margin:3px;
+}
+.formone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+  Button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

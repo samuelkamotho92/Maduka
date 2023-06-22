@@ -5,7 +5,45 @@ import laptops from '../../assets/laptop.jpg'
 import vehicles from '../../assets/vehicles.jpg'
 import furniture from '../../assets/furnitures.jpg'
 import './Auction.css'
+import { Button } from 'react-daisyui'
+import { Link } from 'react-router-dom'
 const Main = () => {
+
+const products = [
+{
+id:1,
+name:"phone",
+image:phone,
+link:`/auctions/1`,
+price:'10000ksh'
+},
+{
+    id:2,
+    name:"laptop",
+    image:laptops,
+    link:`/auctions/2`,
+    price:'20000ksh'
+},
+{
+    id:3,
+    name:"vehicles",
+    image:vehicles,
+    link:`/auctions/3`,
+    price:'1000000ksh'
+    },
+    {
+        id:4,
+        name:"furniture",
+        image:furniture,
+        link:`/auctions/4`,
+        price:'100000ksh'
+ },
+
+]
+
+
+
+
   return (
     <div className='main m-7'>   
 <div className='filter shadow-md '>
@@ -81,25 +119,25 @@ const Main = () => {
     <div className='products'>
         <h1 className='text-center'>Category</h1>
    <div className='product'>
-<div>
-<div className='image'>
-
+{products.map(({name,image,link,price,id})=>(
+<div className='flex-1 relative overflow-hidden border rounded-[20px] hover:opacity-90  h-[50vh] m-3' key={id}>
+<Link to={`${link}`}>
+<div className='rounded-[20px] w-[100%] object-cover h-[100%]'>
+<img src={image} alt={name}/>
 </div>
-<div className='content'>
-<p className='title'>Title</p>
-<span>20000ksh</span>
+<div className='flex absolute w-[100%] h-[100%] left-0 top-0 items-center justify-center flex-col'>
+<span className="inline-block animate-bounce rounded-full p-4 bg-teal-400 text-white text-sm">Latest Product
+        <svg className="w-6 h-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokelinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
+        </svg>
+    </span>
+<Button className='border text-gray-50 cursor-pointer rounded-sm hover:bg-teal-400'>SHOP NOW</Button>
+<p className='text-black mb-[20px] font-medium'>{name}</p>
+<span>{price}</span>
 </div>
+</Link>
 </div>
-<div>
-    Product Two
-</div>
-<div>
-    Product Three
-</div>
-<div>
-    Product Four
-</div>
-<p></p>
+))}
    </div>
     </div>
     </div>
