@@ -7,28 +7,21 @@ const Formone = () => {
   return (
     <form className='formone'>
          <div className="mb-3">
-        <label htmlFor="title" className="form-label">
-          Title
-        </label>
-        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"
- value={title}
- onChange={(e) => {
-    setTitle(e.target.value);
-  }}
- />
+         <label className="label">
+    <span className="label-text">Enter Product Title?</span>
+  </label>
+        <input type="text" placeholder="Product Title" className="input input-bordered input-primary w-[300px]" value={title} />
       </div>
       <div className="mb-3">
-        <label htmlFor="Category" className="form-label">
-          Category
-        </label>
-        <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"
- value={category}
- onChange={(e) => {
-    setCategory(e.target.value);
-  }}
- />
+  <select className="select select-primary w-[300px]">
+  <option disabled selected>Choose your Product Category</option>
+  <option>phone gadgets</option>
+  <option>Laptop and Computers</option>
+  <option>Furnitures</option>
+  <option>Vehicles</option>
+</select>
       </div>
-      <div className="mb-3">
+      <div className="mb-3 w-[300px] mt-4px">
         <label htmlFor="title" className="form-label">
           photos
         </label>

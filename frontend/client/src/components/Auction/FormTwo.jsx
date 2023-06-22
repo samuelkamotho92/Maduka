@@ -4,43 +4,28 @@ const FormTwo = () => {
     const {brand,setBrand,price,setPrice,description,setDescription,paymentMth,setpaymentMth,phoneNumber,setPhoneNumber} = useContext(FormCtx);
 
   return (
-    <form className='flex justify-center items-center'>
-      <div className='mb-3'>
-<label htmlFor='brand'>
-    brand
-</label>
-<input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs"
- value={brand}
- onChange={(e) => {
-    setBrand(e.target.value);
-  }}
- />
+    <form className='formone'>
+ <div className='mb-3 mt-4'>  
+ <select className="select select-primary w-[300px]">
+  <option disabled selected>Choose Brand?</option>
+  <option>New</option>
+  <option>Second hand</option>
+</select>
  </div>
- <div className='mb-3'>  
-<label htmlFor='price'>
-    {price}   
-</label>
-<input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" 
-value={price} 
-onChange={(e) => {
-    setPrice(e.target.value);
-  }}
-/> 
- </div>
- <div className='mb-3'>  
+ <div className='mb-3 w-[300px]'>  
 <label htmlFor='description'>
-    {description}   
+<span className="label-text">Enter Product Price?</span> 
 </label>
-<input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" 
-value={description} 
+<input type="text" placeholder="Price" className="input input-bordered w-full max-w-xs" 
+value={price} 
 onChange={(e) => {
     setDescription(e.target.value);
   }}
 /> 
  </div>
- <div className='mb-3'>  
+ <div className='mb-3 w-[300px]'>  
 <label htmlFor='price'>
-    {paymentMth}   
+<span className="label-text">Enter Your Phone Number?</span>
 </label>
 <input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" 
 value={paymentMth} 
@@ -49,16 +34,11 @@ onChange={(e) => {
   }}
 /> 
  </div>
- <div className='mb-3'>  
-<label htmlFor='price'>
-    {phoneNumber}   
+ <div className='mb-3 w-[300px]'>  
+<label htmlFor='description'>
+<span className="label-text">Enter Product Description?</span> 
 </label>
-<input type="text" placeholder="Type here" className="input input-bordered w-full max-w-xs" 
-value={description} 
-onChange={(e) => {
-    setPhoneNumber(e.target.value);
-  }}
-/> 
+<textarea className="textarea textarea-primary" placeholder="Product Description"></textarea>
  </div>
     </form>
   )

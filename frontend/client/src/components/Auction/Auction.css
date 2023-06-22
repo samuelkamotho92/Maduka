@@ -43,9 +43,20 @@ Button{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding: 20px;
 }
-  Button{
+
+
+
+  .auctionpg{
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    left: 50%;
+    transform: translate(50%);
+  }
+  .header{
+ border-radius: 20px;
+ padding: 10px;
   }
