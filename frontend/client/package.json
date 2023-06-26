@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^3.1.1",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
+    "firebase": "^9.23.0",
     "react": "^18.2.0",
     "react-carousel-minimal": "^1.4.0",
     "react-daisyui": "^3.1.2",

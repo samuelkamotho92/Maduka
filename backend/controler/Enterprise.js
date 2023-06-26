@@ -3,13 +3,14 @@ const sql = require('mssql')
 
 const createEnterprise  = async(req,res)=>{
     const {name,category,location} = req.body;
+    console.log(req.body);
 try{
 const pool = await sql.connect(config);
 let enterprises = await pool.request()
 .input('name',sql.VarChar,name)
 .input('category',sql.VarChar,category)
 .input('location',sql.VarChar,location)
-.query('INSERT INTO enterprises (name,category,location) VALUES (@name,@cateory,@location)')
+.query('INSERT INTO enterprises (name,category,location) VALUES (@name,@category,@location)')
 res.status(200).json({
     status:'success',
     data:enterprises
@@ -26,7 +27,7 @@ let allEnterprises = await pool
 .request()
 .query('SELECT * FROM enterprises')
         res.status(200).json({
-            staus:'success',
+            status:'success',
             data:allEnterprises
         });
     }catch(err){

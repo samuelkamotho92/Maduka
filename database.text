@@ -1,0 +1,2 @@
+ --CREATE TABLE auctions (id INT PRIMARY KEY IDENTITY(1,1), title VARCHAR(50), category VARCHAR(20), photos NVARCHAR(MAX), brand  VARCHAR(20), price VARCHAR(20), phoneNumber VARCHAR(30), paymentMethod VARCHAR(30), description VARCHAR(200))
+ CREATE TABLE (user_id INTEGER PRIMARY KEY ,fullname VARCHAR(50),username VARCHAR(50),phonenumber VARCHAR(30),password VARCHAR(100),isAdmin BIT

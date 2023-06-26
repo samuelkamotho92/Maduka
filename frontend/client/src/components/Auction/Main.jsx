@@ -7,8 +7,22 @@ import furniture from '../../assets/furnitures.jpg'
 import './Auction.css'
 import { Button } from 'react-daisyui'
 import { Link } from 'react-router-dom'
+import { useSelector,useDispatch } from 'react-redux'
+import { getAuction } from '../../redux/apiCall'
+import { useEffect } from 'react'
 const Main = () => {
-
+  const dispatch = useDispatch();
+useEffect(()=>{
+  //fetch from db
+  getAuction(dispatch);
+},[dispatch])
+const auctions = useSelector((state)=>state.auction.auctions.data);
+console.log(auctions);
+let prod;
+for (let i = 0; i < auctions.length; i++) {
+prod =  auctions[i];
+}
+console.log(prod);
 const products = [
 {
 id:1,
@@ -40,9 +54,7 @@ price:'10000ksh'
  },
 
 ]
-
-
-
+let str;
 
   return (
     <div className='main m-7'>   
@@ -119,11 +131,14 @@ price:'10000ksh'
     <div className='products'>
         <h1 className='text-center'>Category</h1>
    <div className='product'>
-{products.map(({name,image,link,price,id})=>(
+
+{
+  prod.map(({title,category,brand,photos,price,phoneNumber,paymentMethod,description,Owner,id})=>
+    (
 <div className='flex-1 relative overflow-hidden border rounded-[20px] hover:opacity-90  h-[50vh] m-3' key={id}>
-<Link to={`${link}`}>
+<Link to={`${id}`}>
 <div className='rounded-[20px] w-[100%] object-cover h-[100%]'>
-<img src={image} alt={name}/>
+<img src={photos.replace(/\[|\]/g, '').split(',')[0].replace(/^'|'$/g, '')} alt='image' />
 </div>
 <div className='flex absolute w-[100%] h-[100%] left-0 top-0 items-center justify-center flex-col'>
 <span className="inline-block animate-bounce rounded-full p-4 bg-teal-400 text-white text-sm">Latest Product
@@ -132,12 +147,16 @@ price:'10000ksh'
         </svg>
     </span>
 <Button className='border text-gray-50 cursor-pointer rounded-sm hover:bg-teal-400'>SHOP NOW</Button>
-<p className='text-black mb-[20px] font-medium'>{name}</p>
+<p className='text-black mb-[20px] font-medium'>{title}</p>
 <span>{price}</span>
 </div>
 </Link>
-</div>
-))}
+</div> 
+  ))
+}
+
+
+
    </div>
     </div>
     </div>

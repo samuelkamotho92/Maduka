@@ -13,7 +13,7 @@ const Sell = () => {
       <h2 className='' style={{textAlign:"center"}}>Sell your Products</h2>
         <p style={{textAlign:"center"}}>Page {pgno} / 2</p>
 </div>   
-      <div className='flex flex-col justify-center   bg-slate-300 w-1/2 h-[70vh] auctionpg'>
+      <div className='flex flex-col justify-center   bg-slate-300 w-1/2 h-[100vh] auctionpg'>
        <div>
         {pgno == 1 ? <Formone />: <FormTwo />}
        </div>
@@ -24,8 +24,9 @@ const Sell = () => {
                 setPagno(pg - 1);
             }}
             style={{textAlign:"center"}}
-            >
-Back
+           type='submit'
+           >
+Back Page
             </Button>
             </div>
           )}  
@@ -38,8 +39,9 @@ Back
                 setPagno(pg + 1);
             }}
             style={{textAlign:"center"}}
-            >
-Next
+           type="submit"
+          >
+Next Page
             </Button>  
             </div>
           )}

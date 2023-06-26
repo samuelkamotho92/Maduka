@@ -7,7 +7,9 @@ import {useForm} from 'react-hook-form';
 import * as yup from 'yup' ;
 import { yupResolver } from '@hookform/resolvers/yup';
 import {login} from '../redux/apiCall'
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 const loginSchema = yup.object().shape({
 email:yup.string().email().required(),
@@ -18,6 +20,7 @@ password:yup.string().min(8).required()
 console.log(data);
 const {email,password} = data
 login(dispatch,{email,password});
+navigate('/')
   }
   return (
     <div className=''>   
@@ -54,6 +57,7 @@ login(dispatch,{email,password});
               type="text"
               placeholder="email"
               {...register('email')}
+              required
             />
             <div className="absolute left-0 inset-y-0 flex items-center">  
           <MdAlternateEmail />
@@ -68,6 +72,7 @@ login(dispatch,{email,password});
               type="password"
               placeholder="Password"
               {...register('password')}
+              required
             />
             <div className="absolute left-0 inset-y-0 flex items-center">
        <BsLockFill />

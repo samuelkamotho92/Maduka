@@ -82,6 +82,7 @@ res.status(404).json(err);
 
 const getOneUser = async(req,res)=>{
     const id = req.params.id;
+    console.log(id);
     try{
        let pool = await sql.connect(config);
        let userOne = await pool.request()

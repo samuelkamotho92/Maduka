@@ -5,6 +5,15 @@ import {
     loginSuccess,
     logout
 } from './userSlice'
+
+import {
+getAuctionFailure,
+getAuctionStart,
+getAuctionSuccess
+} from
+'./auction'
+
+
 import axios from 'axios'
 import {toast} from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
@@ -55,6 +64,7 @@ export const login = async (dispatch, user) => {
         toast.success(`successfully logged in`,{
           position:'top-center'
         })
+        
       }
     } catch (err) {
       dispatch(loginFailure());
@@ -67,4 +77,17 @@ export const login = async (dispatch, user) => {
     toast.info(`logged out successfully`,{
       position:'top-center'
     })
+  }
+
+  export const getAuction = async(dispatch)=>{
+dispatch(getAuctionStart());
+try{
+const res =  await fetch(`http://localhost:8000/auctions`);
+const data = await res.json();
+console.log(data);
+dispatch(getAuctionSuccess(data))
+
+}catch(err){
+dispatch(getAuctionFailure(err));
+}
   }
