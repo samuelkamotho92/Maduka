@@ -10,6 +10,9 @@ import Auctions from './pages/Auctions'
 import {ToastContainer} from 'react-toastify';
 import Auction from './components/Auction/Auction'
 import Sell from './components/Auction/Sell'
+// import AdminHome from './Admin/Dashboard/Home/Home'
+import AdminHome from './Admin/Dashboard/Dashboard';
+import Dashboard from './Admin/Pages/Home/Home'
 function App() {
   return (
     <div>
@@ -21,6 +24,10 @@ function App() {
   <Route path='/login' element={<Login />} />
   <Route path='/auctions' element={<Auctions />}  />
   <Route path='/auctions/:id' element={<Auction />} />
+  <Route exact path='/admin' element={<AdminHome />}>
+    <Route path='/admin/home' element={<Dashboard />} />
+  </Route>
+
   <Route path="/sell" element={<Sell />} />
 </Routes>
     </Router>

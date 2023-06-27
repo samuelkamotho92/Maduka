@@ -4,8 +4,9 @@ const { response } = require('express');
 
 const createAuction = async(req,res)=>{
 try{
-        const {title,category,photos,brand,price,phoneNumber,paymentMethod, description,Owner} = req.body;
-    console.log(req.body);
+        let {brand,price,description,paymentMth,phoneNumber,title, category,photos,Owner} = req.body;
+    photos = JSON.stringify(photos)
+        console.log(typeof(photos));
     let pool = await sql.connect(config);
     let createdAuction = await pool.request()
     .input('title',sql.VarChar,title)
@@ -14,7 +15,7 @@ try{
     .input('brand',sql.VarChar,brand)
     .input('price',sql.VarChar,price)
     .input('phoneNumber',sql.VarChar,phoneNumber)
-    .input('paymentMethod',sql.VarChar,paymentMethod)
+    .input('paymentMethod',sql.VarChar,paymentMth)
     .input('description',sql.VarChar,description)
     .input('Owner',sql.VarChar,Owner)
     .query('INSERT INTO auctions (title,category,photos,brand,price,phoneNumber,paymentMethod,description,Owner) VALUES (@title,@category,@photos,@brand,@price,@phoneNumber,@paymentMethod,@description,@Owner)')

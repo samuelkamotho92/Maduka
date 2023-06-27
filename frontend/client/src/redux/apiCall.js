@@ -9,7 +9,10 @@ import {
 import {
 getAuctionFailure,
 getAuctionStart,
-getAuctionSuccess
+getAuctionSuccess,
+createAuctionFailure,
+createAuctionSuccess,
+createAuctionStart
 } from
 './auction'
 
@@ -89,5 +92,28 @@ dispatch(getAuctionSuccess(data))
 
 }catch(err){
 dispatch(getAuctionFailure(err));
+}
+  }
+
+  export const createAuction = async(auction)=>{
+console.log(auction);
+try{
+const res = await fetch(`http://localhost:8000/auctions`,{
+  method:"POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify(auction),
+})
+const data = await res.json();
+console.log(data);
+if(data.created == 'successfully' ){
+  alert('Auction created successfully');
+  toast.info(`Auction created successfully`,{
+    position:'top-center'
+  })
+}
+}catch(err){
+console.log(err.message);
 }
   }

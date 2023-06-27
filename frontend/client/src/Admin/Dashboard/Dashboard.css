@@ -1,0 +1,25 @@
+/* .styledDashboard{
+    display: flex;
+    height: 100vh;
+} */
+.sidenav{
+    border-right: 1px solid gray;
+    height: calc(100vh - 70px);
+    position: fixed;
+    overflow-y: auto;
+    width: 200px;
+    flex-direction: column;
+    padding: 2rem;
+    flex: 1;
+}
+.content{
+    padding: 2rem 3rem;
+    width: 100%;
+    flex: 3;
+}
+.styledDashboard{
+    display: flex;
+}
+.content{
+    flex: 3;
+}

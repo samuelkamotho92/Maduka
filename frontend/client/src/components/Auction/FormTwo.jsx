@@ -2,13 +2,26 @@ import React, { useContext } from 'react'
 import { FormCtx } from './FormContext'
 import {useForm} from 'react-hook-form'
 import {useDispatch,useSelector} from 'react-redux';
+import { createAuction } from '../../redux/apiCall';
+import { useNavigate } from 'react-router-dom';
 const FormTwo = () => {
-    const {brand,setBrand,price,setPrice,description,setDescription,paymentMth,setpaymentMth,phoneNumber,setPhoneNumber,title,category,photos} = useContext(FormCtx);
-    const {register,handleSubmit,watch,formState:{errors}} = useForm()
-    const user = useSelector((state)=>state.user?.currentUser?.data.username);
+  const navigate = useNavigate();
+    const {brand,setBrand,price,setPrice,description,setDescription,paymentMth,setpaymentMth,phoneNumber,setPhoneNumber,title,setTitle,setCategory,setPhotos,category,photos} = useContext(FormCtx);
+    const Owner = useSelector((state)=>state.user?.currentUser?.data.username);
+    const dispatch = useDispatch();
     const handleClick = (e)=>{
   e.preventDefault();
-  console.log(title,brand,price,description,paymentMth,title,category,photos,user);
+createAuction({brand,price,description,paymentMth,phoneNumber,title,category,photos,Owner})
+setBrand('');
+setPrice('');
+setDescription('');
+setpaymentMth('');
+setPhoneNumber('');
+setTitle('');
+setCategory('');
+setPhotos('');
+ // console.log(title,brand,price,description,paymentMth,title,category,photos,user);
+navigate('/auctions');
 }
 
 

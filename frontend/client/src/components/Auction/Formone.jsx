@@ -102,7 +102,7 @@ Photos
       <div className='flex'>
       {
  photos?.map(photo => (
-  <div className='mx-3' key={photo.name}>
+  <div className='mx-3' key={photo?.name}>
   <img src={photo} alt='img' width='100px'  height='100px'/>
   </div>
  ))

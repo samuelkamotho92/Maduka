@@ -23,37 +23,6 @@ for (let i = 0; i < auctions.length; i++) {
 prod =  auctions[i];
 }
 console.log(prod);
-const products = [
-{
-id:1,
-name:"phone",
-image:phone,
-link:`/auctions/1`,
-price:'10000ksh'
-},
-{
-    id:2,
-    name:"laptop",
-    image:laptops,
-    link:`/auctions/2`,
-    price:'20000ksh'
-},
-{
-    id:3,
-    name:"vehicles",
-    image:vehicles,
-    link:`/auctions/3`,
-    price:'1000000ksh'
-    },
-    {
-        id:4,
-        name:"furniture",
-        image:furniture,
-        link:`/auctions/4`,
-        price:'100000ksh'
- },
-
-]
 let str;
 
   return (
@@ -138,7 +107,8 @@ let str;
 <div className='flex-1 relative overflow-hidden border rounded-[20px] hover:opacity-90  h-[50vh] m-3' key={id}>
 <Link to={`${id}`}>
 <div className='rounded-[20px] w-[100%] object-cover h-[100%]'>
-<img src={photos.replace(/\[|\]/g, '').split(',')[0].replace(/^'|'$/g, '')} alt='image' />
+  {console.log(photos?.replace(/\[|\]/g, '').split(',')[0].replace(/"/g, ''))}
+<img src={photos?.replace(/\[|\]/g, '').split(',')[0].replace(/"/g, '')} width="" alt='image' />
 </div>
 <div className='flex absolute w-[100%] h-[100%] left-0 top-0 items-center justify-center flex-col'>
 <span className="inline-block animate-bounce rounded-full p-4 bg-teal-400 text-white text-sm">Latest Product
