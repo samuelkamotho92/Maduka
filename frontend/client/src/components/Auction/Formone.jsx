@@ -29,6 +29,7 @@ handleChange();
     const handleClick = async(e)=>{
       e.preventDefault();
 for (let i = 0; i < file.length; i++) {
+  //timestamp unique 
       const fileName = new Date().getTime() + file[i].name;
       const storage = getStorage(app);
       const storageRef = ref(storage, fileName);

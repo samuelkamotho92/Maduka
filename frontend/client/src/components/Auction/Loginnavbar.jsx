@@ -32,7 +32,7 @@ const Loginnavbar = () => {
             </p>
           </div>
           <div className="text-sm cursor-pointer m-2 sm:text-sm ml-2">
-            <Link to="/dashboard">
+            <Link to="/admin/home">
                 <div className="tooltip tooltip-bottom" data-tip='Dashboard'>
                 <svg
       viewBox="0 0 24 24"
@@ -130,7 +130,7 @@ const Loginnavbar = () => {
               </p>
             </div>
             <div className="text-sm cursor-pointer m-2 sm:text-sm ml-2">
-              <Link to="/dashboard">Dashbord</Link>
+              <Link to="/admin/home">Dashbord</Link>
             </div>
             <div className="text-sm cursor-pointer m-2 sm:text-sm ml-2 ">
               <Link to="/notifications">{MdNotifications}</Link>

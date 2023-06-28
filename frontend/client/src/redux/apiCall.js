@@ -12,10 +12,15 @@ getAuctionStart,
 getAuctionSuccess,
 createAuctionFailure,
 createAuctionSuccess,
-createAuctionStart
+createAuctionStart,
+updateAuctionFailure,
+updateAuctionStart,
+updateAuctionSuccess,
+deleteAuctionStart,
+deleteAuctionSuccess,
+deleteAuctionFailure
 } from
 './auction'
-
 
 import axios from 'axios'
 import {toast} from 'react-toastify';
@@ -89,7 +94,7 @@ const res =  await fetch(`http://localhost:8000/auctions`);
 const data = await res.json();
 console.log(data);
 dispatch(getAuctionSuccess(data))
-
+return data;
 }catch(err){
 dispatch(getAuctionFailure(err));
 }
@@ -117,3 +122,33 @@ if(data.created == 'successfully' ){
 console.log(err.message);
 }
   }
+
+  export const updateAuction = async(auction,id,dispatch)=>{
+    console.log(auction,id,'all products ');
+    dispatch(updateAuctionStart());
+try{
+  const {data} = await axios.put(`http://localhost:8000/auctions/${id}`,auction);
+  console.log(data);
+// const val = await getAuction();
+// console.log(val,'my val');
+  dispatch(updateAuctionSuccess({id,auction}));
+// console.log(data.auction);
+
+}catch(err){
+console.log(err);
+dispatch(updateAuctionFailure());
+}
+  }
+
+
+  //delete user 
+export const deleteAuction = async (id,dispatch)=>{
+  dispatch(deleteAuctionStart())
+  try
+  {
+    await axios.delete(`http://localhost:8000/auctions/${id}`);
+    dispatch(deleteAuctionSuccess())
+  }catch(err){
+dispatch(deleteAuctionFailure());
+  }
+}

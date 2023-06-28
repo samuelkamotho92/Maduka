@@ -108,7 +108,6 @@ const updateUser = async(req,res)=>{
          const {firstName,lastName,phoneNumber,email,password}= req.body;
          let pool = await sql.connect(config);
       let updatedUser =   await pool.request()
-         .input("id", sql.Int, id)
          .input('firstName',sql.VarChar,firstName)
          .input('lastName',sql.VarChar,lastName)
          .input('phoneNumber',sql.VarChar,phoneNumber)

@@ -13,6 +13,8 @@ import Sell from './components/Auction/Sell'
 // import AdminHome from './Admin/Dashboard/Home/Home'
 import AdminHome from './Admin/Dashboard/Dashboard';
 import Dashboard from './Admin/Pages/Home/Home'
+import Auctionlist from './Admin/Pages/AuctionList/Auctionlist'
+import AdminAuction from './Admin/Pages/Auction/Auction';
 function App() {
   return (
     <div>
@@ -26,6 +28,8 @@ function App() {
   <Route path='/auctions/:id' element={<Auction />} />
   <Route exact path='/admin' element={<AdminHome />}>
     <Route path='/admin/home' element={<Dashboard />} />
+    <Route path='/admin/auctions' element={<Auctionlist />}  />
+    <Route path='/admin/auction/:id' element={<AdminAuction />} />
   </Route>
 
   <Route path="/sell" element={<Sell />} />

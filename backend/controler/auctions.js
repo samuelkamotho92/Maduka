@@ -66,14 +66,37 @@ res.status(404).json(err)
 }
 
 const updateAuction = async(req,res)=>{
-// const id = req.params.id;
-// const updatedEnterprise =  await .update(req.body,{
-//     where :{id:id}
-// })
-// res.status(200).json({
-//     status:'success',
-//     data:updatedEnterprise
-// })
+    const id = req.params.id;
+    console.log(id);
+    console.log(req.body);
+    const {title,category,photos,brand,price,phoneNumber,paymentMethod,description,Owner} = req.body;
+   let pool = await sql.connect(config);
+   let updatedAuction = await pool.request()
+   .input('title',sql.VarChar,title)
+   .input('category',sql.VarChar,category)
+   .input('photos',sql.NVarChar,photos)
+   .input('brand',sql.VarChar,brand)
+   .input('price',sql.VarChar,price)
+   .input('phoneNumber',sql.VarChar,phoneNumber)
+   .input('paymentMethod',sql.VarChar,paymentMethod)
+   .input('description',sql.VarChar,description)
+   .input('Owner',sql.VarChar,Owner)
+   .query(`UPDATE auctions 
+   SET title = COALESCE(@title, title),
+   category = COALESCE(@category, category),
+   photos = COALESCE(@photos, photos),
+   brand = COALESCE(@brand, brand),
+   price = COALESCE(@price, price),
+   phoneNumber = COALESCE(@category, phoneNumber),
+   paymentMethod = COALESCE(@paymentMethod, paymentMethod),
+   description = COALESCE(@description, description),
+   Owner = COALESCE(@owner, owner)
+   `)
+   console.log(updatedAuction);
+    res.status(200).json({
+    status:'success',
+    auction:updatedAuction
+})
 }
 const deleteAuction = async(req,res)=>{
     const id = req.params.id;
@@ -87,7 +110,6 @@ const deleteAuction = async(req,res)=>{
     }catch(err){
     res.status(400).json(err)
     }
-
 }
 
 module.exports = {
@@ -95,4 +117,5 @@ createAuction,
 getAuctions,
 getOneAuction,
 deleteAuction,
+updateAuction
 }

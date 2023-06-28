@@ -9,6 +9,7 @@ import Footer from '../Footer';
 const Auction = () => {
 let auctionId;
 const location = useLocation();
+console.log(location.pathname);
 auctionId = location.pathname.split('/')[2];
 const auction = useSelector((state)=>state.auction.auctions.data[0]).find(auction=>auction.id == auctionId);
 console.log(auction);
