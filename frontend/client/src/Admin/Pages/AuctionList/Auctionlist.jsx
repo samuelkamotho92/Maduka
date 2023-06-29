@@ -3,15 +3,18 @@ import {userRows} from '../../DummyData/Dummy'
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import './Auctionlist.css';
+import { deleteAuction } from '../../../redux/apiCall';
 const Auctionlist = () => {
+  const dispatch = useDispatch();
 const user = useSelector((state)=>state.user?.currentUser?.data.username)
 console.log(user)
 const auctions = useSelector((state)=>state.auction.auctions.data[0].filter(auction=>auction.Owner == user));
 console.log(auctions);
-const handleDelete = ()=>{
+const handleDelete = (id)=>{
     console.log("Delete Outline");
+  deleteAuction(id,dispatch)
 }
 
     const columns = [

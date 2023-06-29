@@ -9,15 +9,22 @@ import { Button } from 'react-daisyui'
 import { Link } from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 import { getAuction } from '../../redux/apiCall'
-import { useEffect } from 'react'
+import { useEffect,useContext } from 'react'
+import {Filterprod} from '../../pages/Auctions';
 const Main = () => {
   const dispatch = useDispatch();
+  const {filterVal,setfilterVal} = useContext(Filterprod);
+  console.log(filterVal);
 useEffect(()=>{
   //fetch from db
   getAuction(dispatch);
 },[dispatch])
+console.log(useSelector((state)=>state));
+console.log(useSelector((state)=>state.auction.auctions.data[0],'auctions'))
 const auctions = useSelector((state)=>state.auction.auctions.data);
-console.log(auctions);
+console.log(auctions[0],'getData');
+const pro = auctions[0].findIndex((auction)=>auction.id == 4);
+console.log(pro)
 let prod;
 for (let i = 0; i < auctions.length; i++) {
 prod =  auctions[i];
@@ -102,7 +109,13 @@ let str;
    <div className='product'>
 
 {
-  prod.map(({title,category,brand,photos,price,phoneNumber,paymentMethod,description,Owner,id})=>
+  prod
+  .filter(
+    (pro)=>
+    pro.category.toLowerCase().includes(filterVal)
+    || pro.title.toLowerCase().includes(filterVal)
+    || pro.description.toLowerCase().includes(filterVal)
+  ).map(({title,category,brand,photos,price,phoneNumber,paymentMethod,description,Owner,id})=>
     (
 <div className='flex-1 relative overflow-hidden border rounded-[20px] hover:opacity-90  h-[50vh] m-3' key={id}>
 <Link to={`${id}`}>

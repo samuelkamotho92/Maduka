@@ -47,7 +47,7 @@ const Loginnavbar = () => {
   
             </Link>
           </div>
-          <div className="text-lg cursor-pointer m-2 sm:text-sm ml-2 text-red-300">
+          {/* <div className="text-lg cursor-pointer m-2 sm:text-sm ml-2 text-red-300">
             <Link to="/notifications" className="font-bold text-lg">
             <div className="tooltip tooltip-bottom" data-tip="Notifications">              
             <svg
@@ -85,7 +85,7 @@ const Loginnavbar = () => {
             </div>
 
             </Link>
-          </div>
+          </div> */}
           <div className="text-lg cursor-pointer m-2 sm:text-sm ml-2">
             <Link to='/sell'>
        <div className="tooltip tooltip-bottom" data-tip='SELL ONLINE'>
@@ -132,12 +132,9 @@ const Loginnavbar = () => {
             <div className="text-sm cursor-pointer m-2 sm:text-sm ml-2">
               <Link to="/admin/home">Dashbord</Link>
             </div>
-            <div className="text-sm cursor-pointer m-2 sm:text-sm ml-2 ">
-              <Link to="/notifications">{MdNotifications}</Link>
-            </div>
-            <div className="text-sm cursor-pointer m-2 sm:text-sm ml-2">
+            {/* <div className="text-sm cursor-pointer m-2 sm:text-sm ml-2">
               <Link to="/profile">{BiUserCircle}</Link>
-            </div>
+            </div> */}
           </nav>
         </section>
       </div>

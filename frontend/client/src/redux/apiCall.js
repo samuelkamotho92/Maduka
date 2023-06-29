@@ -123,15 +123,15 @@ console.log(err.message);
 }
   }
 
-  export const updateAuction = async(auction,id,dispatch)=>{
-    console.log(auction,id,'all products ');
+  export const updateAuction = async(auctionsUpdate,id,dispatch)=>{
+    console.log(auctionsUpdate,id,'all products ');
     dispatch(updateAuctionStart());
 try{
-  const {data} = await axios.put(`http://localhost:8000/auctions/${id}`,auction);
-  console.log(data);
+  // const {data} = await axios.put(`http://localhost:8000/auctions/${id}`,auction);
+  // console.log(data);
 // const val = await getAuction();
 // console.log(val,'my val');
-  dispatch(updateAuctionSuccess({id,auction}));
+  dispatch(updateAuctionSuccess({auctionsUpdate,id}));
 // console.log(data.auction);
 
 }catch(err){
@@ -143,11 +143,12 @@ dispatch(updateAuctionFailure());
 
   //delete user 
 export const deleteAuction = async (id,dispatch)=>{
+  console.log(id,'val');
   dispatch(deleteAuctionStart())
   try
   {
     await axios.delete(`http://localhost:8000/auctions/${id}`);
-    dispatch(deleteAuctionSuccess())
+    dispatch(deleteAuctionSuccess(id))
   }catch(err){
 dispatch(deleteAuctionFailure());
   }

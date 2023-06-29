@@ -98,6 +98,11 @@ const updateAuction = async(req,res)=>{
     auction:updatedAuction
 })
 }
+
+//filter product by category
+
+
+
 const deleteAuction = async(req,res)=>{
     const id = req.params.id;
     try{

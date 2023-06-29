@@ -1,4 +1,5 @@
-import React,{useState,useEffect,useMemo} from 'react'
+import React,{useState} from 'react
+import { useSelector } from 'react-redux'
 import './Home.css'
 import Chart from '../../Dashboard/Chart/Chart'
 import FeaturedInfo from '../../Dashboard/FeaturedInfo/FeaturedInfo'
@@ -10,45 +11,15 @@ import Topbar from '../../Dashboard/Topbar/Topbar';
 import Sidebar from '../../Dashboard/SideBar/Sidebar'
 const AdminHome = () => {
   const [userStats,setUserStats] = useState([]);
-  const MONTHS = useMemo(
-    () => [
-      "Jan",
-      "Feb",
-      "Mar",
-      "Apr",
-      "May",
-      "Jun",
-      "Jul",
-      "Agu",
-      "Sep",
-      "Oct",
-      "Nov",
-      "Dec",
-    ],
-    []
-  );
-
-  useEffect(() => {
-    const getStats = async () => {
-      try {
-        const res = await userRequest.get("/users/stats");
-        res.data.map((item) =>
-          setUserStats((prev) => [
-            ...prev,
-            { name: MONTHS[item._id - 1], "Active User": item.total },
-          ])
-        );
-      } catch {}
-    };
-    getStats();
-  }, [MONTHS]);
+  const user = useSelector((state)=>state.user?.currentUser?.data.username)
+  const auctions = useSelector((state)=>state.auction.auctions.data[0].filter(auction=>auction.Owner == user));
   console.log(userStats);
   return (
     <div className="home">
       <div className='container'>
         <div className='maincontent'>
         <FeaturedInfo />
-    <Chart data={userStats} title="User Analytics" grid dataKey="Active User"/>
+    <Chart data={userData} title="Auction Analytics" grid dataKey="Auctions"/>
     <div className="homeWidgets">
       <WidgetSm/>
       <WidgetLg/>

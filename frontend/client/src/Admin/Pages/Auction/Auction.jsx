@@ -34,9 +34,9 @@ const Auction = () => {
 
 const handleClick = (e)=>{
 e.preventDefault();
-const auctions = {...inputs};
-console.log(auctions);
-updateAuction(auctions,auctionId,dispatch);
+const auctionsUpdate = {...inputs};
+console.log(auctionsUpdate);
+updateAuction(auctionsUpdate,auctionId,dispatch);
 alert('auction updated successfully');
 }
 
@@ -52,48 +52,48 @@ alert('auction updated successfully');
         <div className="auctionShow">
           <div className="auctionShowTop">
             <img
-              src={auction.photos.replace(/\[|\]/g, '').split(',')[0].replace(/"/g, '')}
-              alt={auction.title}
+              src={auction?.photos?.replace(/\[|\]/g, '').split(',')[0].replace(/"/g, '')}
+              alt={auction?.title}
               className="auctionShowImg"
             />
             <div className="auctionShowTopTitle">
-              <span className="auctionShowUsername">{auction.title}</span>
+              <span className="auctionShowUsername">{auction?.title}</span>
             </div>
           </div>
           <div className="auctionShowBottom">
             <span className="auctionShowTitle">Account Details</span>
             <div className="auctionShowInfo">
               < TitleOutlined className="auctionShowIcon" />
-              <span className="auctionShowInfoTitle">{auction.title}</span>
+              <span className="auctionShowInfoTitle">{auction?.title}</span>
             </div>
             <div className="auctionShowInfo">
               <  AttachMoneyOutlined className="auctionShowIcon" />
-              <span className="auctionShowInfoTitle">{auction.price}</span>
+              <span className="auctionShowInfoTitle">{auction?.price}</span>
             </div>
             <div className="auctionShowInfo">
               < BrandingWatermark className="auctionShowIcon" />
-              <span className="auctionShowInfoTitle">{auction.brand}</span>
+              <span className="auctionShowInfoTitle">{auction?.brand}</span>
             </div>
             <div className="auctionShowInfo">
               <CategoryOutlined className="auctionShowIcon" />
-              <span className="auctionShowInfoTitle">{auction.category}</span>
+              <span className="auctionShowInfoTitle">{auction?.category}</span>
             </div>
             <div className="auctionShowInfo">
               <DescriptionSharp className="auctionShowIcon" />
               <span className="auctionShowInfoTitle">
-                {auction.description}
+                {auction?.description}
               </span>
             </div>
             <div className="auctionShowInfo">
               <MoneyOutlined className="auctionShowIcon" />
               <span className="auctionShowInfoTitle">
-                {auction.paymentMethod}
+                {auction?.paymentMethod}
               </span>
             </div>
             <div className="auctionShowInfo">
               <PhoneAndroidSharp className="auctionShowIcon" />
               <span className="auctionShowInfoTitle">
-                {auction.phoneNumber}
+                {auction?.phoneNumber}
               </span>
             </div>
           </div>
@@ -107,7 +107,7 @@ alert('auction updated successfully');
                 <input
                   type="text"
                   name="title"
-                  placeholder={auction.title}
+                  placeholder={auction?.title}
                   className="auctionUpdateInput"
                   onChange={handleChange}
                 />
@@ -117,26 +117,26 @@ alert('auction updated successfully');
                 <input
                   type="text"
                   name="price"
-                  placeholder={auction.price}
+                  placeholder={auction?.price}
                   className="auctionUpdateInput"
                   onChange={handleChange}
                 />
               </div>
               <div className="auctionUpdateItem">
-                <label>{auction.brand}</label>
+                <label>{auction?.brand}</label>
                 <select name="brand" id=" brand" onChange={handleChange}  className="auctionUpdateInput">
                   <option disabled selected>
-                    {auction.brand}
+                    {auction?.brand}
                   </option>
                   <option value="New">New</option>
                   <option value="Second hand">Second Hand</option>
                 </select>
               </div>
               <div className="auctionUpdateItem">
-                <label>{auction.category}</label>
+                <label>{auction?.category}</label>
                 <select name="category" id=" category" onChange={handleChange} className="auctionUpdateInput">
                   <option disabled selected>
-                    {auction.category}
+                    {auction?.category}
                   </option>
                   <option>phone gadgets</option>
                   <option>Laptop and Computers</option>
@@ -149,7 +149,7 @@ alert('auction updated successfully');
                 <input
                   type="text"
                   name="description"
-                  placeholder={auction.description}
+                  placeholder={auction?.description}
                   className="auctionUpdateInput"
                   onChange={handleChange}
                 />
@@ -159,16 +159,16 @@ alert('auction updated successfully');
                 <input
                   type="text"
                   name="phoneNumber"
-                  placeholder={auction.phoneNumber}
+                  placeholder={auction?.phoneNumber}
                   className="auctionUpdateInput"
                   onChange={handleChange}
                 />
               </div>
               <div className="auctionUpdateItem">
-                <label>{auction.paymentMethod}</label>
+                <label>{auction?.paymentMethod}</label>
                 <select name="paymentMethod" id="paymentMethod"  onChange={handleChange} className="auctionUpdateInput">
                   <option disabled selected>
-                    {auction.paymentMethod}
+                    {auction?.paymentMethod}
                   </option>
                   <option value="Mpesa">Mpesa</option>
                   <option value="On Cash">On Cash</option>
@@ -179,8 +179,8 @@ alert('auction updated successfully');
               <div className="auctionUpdateUpload">
                 <img
                   className="auctionUpdateImg"
-                  src={auction.photos.replace(/\[|\]/g, '').split(',')[0].replace(/"/g, '')}
-                  alt={auction.title}
+                  src={auction?.photos.replace(/\[|\]/g, '').split(',')[0].replace(/"/g, '')}
+                  alt={auction?.title}
                 />
                 <label htmlFor="file">
                   <Publish className="auctionUpdateIcon" />

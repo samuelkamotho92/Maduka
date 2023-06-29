@@ -1,13 +1,17 @@
 import React from 'react'
 import './Topbar.css'
 import { NotificationsNone, Language, Settings } from "@material-ui/icons";
-
+import { Link } from 'react-router-dom';
 const Topbar = () => {
   return (
     <div className='topbar'>
     <div className='topbarWrapper bg-gradient-to-r  from-[#ad5389] to-[#3c1053] text-slate-50'>
         <div className='topLeft'>
-        <span className="logo">Maduka SMEs</span>
+        <span className="logo">
+          <Link to='/'>  
+          Maduka SMEs
+          </Link>
+          </span>
         </div>
         <div className='topRight'>
         <div className="topbarIconContainer">

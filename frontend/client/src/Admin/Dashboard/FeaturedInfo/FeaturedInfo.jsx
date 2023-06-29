@@ -1,28 +1,17 @@
 import React,{useState,useEffect} from 'react';
 import "./FeaturedInfo.css";
 import { ArrowDownward, ArrowUpward } from "@material-ui/icons";
+import { useSelector } from 'react-redux';
 // import { userRequest } from '../../../requestMethod.js';
 const FeaturedInfo = () => {
-  const [income, setIncome] = useState([]);
-  const [perc, setPerc] = useState(0);
-
-  // useEffect(() => {
-  //   const getIncome = async () => {
-  //     try {
-  //       const res = await userRequest.get("/order/income");
-  //       setIncome(res.data);
-  //       setPerc((res.data[1].total * 100) / res.data[0].total - 100);
-  //     } catch {}
-  //   };
-  //   getIncome();
-  // }, []);
-  // console.log(income)
+  const user = useSelector((state)=>state.user?.currentUser?.data.username)
+ const auctions = useSelector((state)=>state.auction.auctions.data[0].filter(auction=>auction.Owner == user));
   return (
 <div className="featured">
       <div className="featuredItem">
         <span className="featuredTitle">Sold Auctions</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">20</span>
+          <span className="featuredMoney">{auctions.length}</span>
           <span className="featuredMoneyRate">
             -1.4 <ArrowDownward className="featuredIcon negative"/>
           </span>
